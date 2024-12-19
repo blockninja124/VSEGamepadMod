@@ -1,0 +1,43 @@
+modLoader="javafml" #mandatory
+
+loaderVersion="[40,)"
+license="MIT License"
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+[[mods]]
+modId="vsegamepad"
+version="${version}" #mandatory
+displayName="VSE Gamepad Mod" #mandatory
+# A URL for the "homepage" for this mod, displayed in the mod UI
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+# A file name (in the root of the mod JAR) containing a logo for display
+logoFile="vseg_logo.png" #optional
+authors="MJ" #optional
+description='''
+addon for VS: Eureka - gamepad support for ship control, made by MJ.
+'''
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.vsegamepad]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[40.2,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
+# Here's another dependency
+[[dependencies.vsegamepad]]
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "1.18.2"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.vsegamepad]]
+    modId="valkyrienskies"
+    mandatory=true
+    versionRange="[2,)"
+    ordering="AFTER"
+    side="BOTH"

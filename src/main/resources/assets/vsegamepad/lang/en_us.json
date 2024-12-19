@@ -1,0 +1,7 @@
+{
+  "key.categories.vsegamepad": "VS Gamepad",
+  "key.vsegamepad.ship_up": "Ship Forward (I)",
+  "key.vsegamepad.ship_down": "Ship Backward (K)",
+  "key.vsegamepad.ship_left": "Ship Left (J)",
+  "key.vsegamepad.ship_right": "Ship Right (L)"
+}
