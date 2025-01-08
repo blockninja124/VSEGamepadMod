@@ -1,6 +1,8 @@
 package com.mj.vsegamepad;
 
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.joml.Vector3f;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWGamepadState;
@@ -41,17 +43,19 @@ public class GamepadManager {
         sendToShip(impulse);
     }
 
+    // Make sure its on client, otherwise minecraft.player might be null
+    @OnlyIn(Dist.CLIENT)
     private static void sendToShip(Vector3f impulse) {
         if (minecraft.player.getVehicle() instanceof ShipMountingEntity ship) {
             invokeHandleShipInput(ship, impulse);
         }
     }
 
-    private static void invokeHandleShipInput(ShipMountingEntity ship, Vector3f impulse) {
+    private static void invokeHandleShipInput(ShipMountingEntity shipMountingEntity, Vector3f impulse) {
         try {
             // Reflectively invoke the method injected by the mixin
-            Method handleShipInput = ship.getClass().getMethod("handleShipInput", Vector3f.class);
-            handleShipInput.invoke(ship, impulse);
+            Method handleShipInput = shipMountingEntity.getClass().getMethod("handleShipInput", Vector3f.class);
+            handleShipInput.invoke(shipMountingEntity, impulse);
         } catch (Exception e) {
             e.printStackTrace();
         }
