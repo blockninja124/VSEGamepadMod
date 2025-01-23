@@ -20,7 +20,7 @@ public class GamepadManager {
         for (int i = GLFW.GLFW_JOYSTICK_1; i <= GLFW.GLFW_JOYSTICK_LAST; i++) {
             if (GLFW.glfwJoystickPresent(i) && GLFW.glfwJoystickIsGamepad(i)) {
                 try (MemoryStack stack = MemoryStack.stackPush()) {
-                    GLFWGamepadState state = GLFWGamepadState.mallocStack(stack);
+                    GLFWGamepadState state = GLFWGamepadState.malloc(stack);
                     if (GLFW.glfwGetGamepadState(i, state)) {
                         handleGamepadInput(state);
                     }

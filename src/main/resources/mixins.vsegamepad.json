@@ -1,6 +1,6 @@
 {
   "required": true,
-  "minVersion": "0.8",
+  "refmap": "mixins.vsegamepad.refmap.json",
   "package": "com.mj.vsegamepad.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
